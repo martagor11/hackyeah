@@ -10,6 +10,7 @@ export class FirstAidComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
