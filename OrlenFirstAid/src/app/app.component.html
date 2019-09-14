@@ -1,4 +1,8 @@
-
-<button [routerLink]="['/adult']">Dorosły</button>
-
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <p>{{question}}</p>
+  <div *ngFor="let answer of answers">
+    <button (click)="clickAnswer(answer)">{{answer}}</button>
+  </div>
+</div>
 <router-outlet></router-outlet>
