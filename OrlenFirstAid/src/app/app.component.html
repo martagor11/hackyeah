@@ -1,8 +1,6 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <p>{{question}}</p>
-  <div *ngFor="let answer of answers">
-    <button (click)="clickAnswer(answer)">{{answer}}</button>
+<div class="wrapper">
+  <app-header></app-header>
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
 </div>
-<router-outlet></router-outlet>
