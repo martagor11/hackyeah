@@ -3,13 +3,27 @@
   <span>{{voiceAssistant ? 'Wyłącz asystenta' : 'Uruchom asystenta'}}</span>
 </button>
 
-<p class="question">{{question}}</p>
+<div *ngIf="!showGuide">
+  <p class="question">{{question}}</p>
 
-<div *ngFor="let answer of answers; let i = index">
-  <button class="card card-center-content red-arrow"
-          [ngClass]="{'active': selectedQuestion === i}"
-          (click)="clickAnswer(answer)">
-    <h2>{{answer}}</h2>
-  </button>
+  <div *ngFor="let answer of answers; let i = index">
+    <button class="card card-center-content red-arrow"
+            [ngClass]="{'active': selectedQuestion === i}"
+            (click)="clickAnswer(answer)">
+      <h2>{{answer}}</h2>
+    </button>
+  </div>
 </div>
 
+<div *ngIf="showGuide">
+  <img src="../../assets/images/firt-aid-giph.gif"/>
+
+  <ul class="guide-list">
+    <li *ngFor="let item of guideList">{{item}}</li>
+  </ul>
+
+  <button class="assistance" (click)="toggleTempo()">
+    <img src="../../assets/images/tempo{{tempoSound ? '' : ''}}.svg">
+    <span>{{tempoSound ? 'Wyłącz tempo' : 'Włącz tempo'}}</span>
+  </button>
+</div>

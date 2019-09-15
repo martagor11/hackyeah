@@ -1,11 +1,6 @@
 @import '../styles/fonts';
 @import '../styles/colors';
 
-.page-title {
-  font-size: 14px;
-  margin-top: 46px;
-}
-
 .question {
   font-size: 14px;
   text-align: center;
@@ -29,3 +24,31 @@
     margin-right: 5px;
   }
 }
+
+.guide-list {
+  font-size: 14px;
+  font-family: $header-font;
+  font-weight: 600;
+  margin-bottom: 21px;
+  margin-top: 30px;
+  padding-left: 30px;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin-bottom: 24px;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 17px;
+      height: 17px;
+      background: $primary-red;
+      border-radius: 50%;
+      position: absolute;
+      left: -24px;
+      top: -2px;
+    }
+  }
+}
+

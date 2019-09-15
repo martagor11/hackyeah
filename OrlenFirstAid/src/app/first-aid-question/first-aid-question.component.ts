@@ -13,6 +13,8 @@ export class FirstAidQuestionComponent implements OnInit {
   selectedQuestion = null;
   recognition = new webkitSpeechRecognition();
   voiceAssistant = false;
+  tempoSound = false;
+  showGuide = false;
 
   questionsList = [
     {
@@ -29,7 +31,14 @@ export class FirstAidQuestionComponent implements OnInit {
     }
   ];
 
-  constructor(private ref: ChangeDetectorRef, private router: Router) {
+  guideList = [
+    'Poszkodowany musi leżeć na plecach.',
+    'Wymierz dłonią odpowiednią odległość.',
+    'Zapleć dłonie razem.',
+    'Uciskaj w tempie ok. 100 razy na minutę (włącz tempo poniżej).',
+  ];
+
+  constructor(private ref: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -49,6 +58,14 @@ export class FirstAidQuestionComponent implements OnInit {
     if (this.voiceAssistant) {
       const msg = new SpeechSynthesisUtterance();
       msg.text = this.question + ' ' + this.answers.join(', ');
+      speechSynthesis.speak(msg);
+    }
+  }
+
+  readGuide() {
+    if (this.voiceAssistant) {
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = this.guideList.join(', ');
       speechSynthesis.speak(msg);
     }
   }
@@ -80,18 +97,23 @@ export class FirstAidQuestionComponent implements OnInit {
   clickAnswer(answer) {
     this.selectedQuestion = this.answers.indexOf(answer);
     this.ref.detectChanges();
+    this.stopVoiceRecognition();
+    this.stopReadingQuestionsAndAnswers();
+
     setTimeout(() => {
       if (this.currentQuestion !== this.questionsList.length - 1) {
         this.currentQuestion++;
         this.selectedQuestion = null;
+
         this.displayQuestion();
         this.readQuestionAndAnswers();
         this.startVoiceRecognition();
         this.ref.detectChanges();
       } else {
-        this.router.navigateByUrl('first-aid-guide');
+        this.showGuide = true;
+        this.readGuide();
       }
-    }, 500);
+    }, 400);
   }
 
   toggleAssistance() {
@@ -103,5 +125,9 @@ export class FirstAidQuestionComponent implements OnInit {
       this.stopReadingQuestionsAndAnswers();
       this.stopVoiceRecognition();
     }
+  }
+
+  toggleTempo() {
+
   }
 }

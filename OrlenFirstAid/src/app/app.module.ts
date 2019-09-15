@@ -6,7 +6,6 @@ import { FirstAidComponent } from './firstAid/firstAid.component';
 import { FirstAidQuestionComponent } from './first-aid-question/first-aid-question.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { FirstAidGuideComponent } from './first-aid-guide/first-aid-guide.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { FirstAidGuideComponent } from './first-aid-guide/first-aid-guide.compon
     FirstAidComponent,
     HomeComponent,
     HeaderComponent,
-    FirstAidGuideComponent
   ],
   imports: [
     BrowserModule,
