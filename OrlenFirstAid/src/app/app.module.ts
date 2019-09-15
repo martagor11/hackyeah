@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SecureComponent } from './secure/secure.component';
 import { FirstAidComponent } from './first-aid/first-aid.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
    declarations: [
@@ -15,7 +16,8 @@ import { FirstAidComponent } from './first-aid/first-aid.component';
       FirstAidComponent,
       HomeComponent,
       HeaderComponent,
-      SecureComponent
+      SecureComponent,
+      HelpComponent
    ],
    imports: [
       BrowserModule,
