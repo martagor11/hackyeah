@@ -1,4 +1,29 @@
-.Pierwsza-pomoc {
+.car {
+    float: left;
+    width: 48px;
+    height: 40.7px;
+    object-fit: contain;
+}
+
+.phone {
+    float: left;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.plaster {
+    float: left;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.title {
+    padding-left: 71px;
+    padding-right: 74px;
+    padding-top: 24px;
+    padding-bottom: 40px;
     width: 213px;
     height: 31px;
     font-family: Futura;
@@ -10,12 +35,8 @@
     letter-spacing: normal;
     text-align: center;
     color: #464646;
-  }
+}
 
-  .Rectangle-Copy-6 {
-    width: 344px;
-    height: 110px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.16);
-    background-color: #ffffff;
-  }  
+h3 {
+    text-align: center;
+}
