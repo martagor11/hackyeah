@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -6,13 +6,17 @@ import {Router} from '@angular/router';
   templateUrl: './first-aid-question.component.html',
   styleUrls: ['./first-aid-question.component.scss']
 })
-export class FirstAidQuestionComponent implements OnInit, AfterViewInit {
+export class FirstAidQuestionComponent implements OnInit {
   question: string;
   answers: string[];
+  currentQuestion = 0;
+  selectedQuestion = null;
+  recognition = new webkitSpeechRecognition();
+  voiceAssistant = false;
 
   questionsList = [
     {
-      question: 'Kto jest poszkodowanym?',
+      question: 'Kto jest poszkodowany?',
       answers: ['niemowlę', 'dziecko', 'dorosły']
     },
     {
@@ -25,20 +29,15 @@ export class FirstAidQuestionComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  currentQuestion = 0;
-  selectedQuestion = null;
-  voiceAssistant = true;
-
   constructor(private ref: ChangeDetectorRef, private router: Router) {
   }
 
   ngOnInit() {
-    this.displayQuestion();
-  }
+    this.recognition.lang = 'pl-PL';
+    this.recognition.interimResults = false;
+    this.recognition.maxAlternatives = 1;
 
-  ngAfterViewInit(): void {
-    this.readQuestionAndAnswers();
-    this.recogniseAnswer();
+    this.displayQuestion();
   }
 
   displayQuestion() {
@@ -54,27 +53,28 @@ export class FirstAidQuestionComponent implements OnInit, AfterViewInit {
     }
   }
 
-  recogniseAnswer() {
-    if (this.voiceAssistant) {
-      const recognition = new webkitSpeechRecognition();
-      recognition.lang = 'pl-PL';
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
+  stopReadingQuestionsAndAnswers() {
+    speechSynthesis.cancel();
+  }
 
-      recognition.start();
+  startVoiceRecognition() {
+    this.recognition.start();
 
-      recognition.onresult = (event) => {
-        const last = event.results.length - 1;
-        const answer = event.results[last][0].transcript;
+    this.recognition.onresult = (event) => {
+      const last = event.results.length - 1;
+      const answer = event.results[last][0].transcript;
 
-        this.clickAnswer(answer);
-      };
+      this.clickAnswer(answer);
+    };
 
-      recognition.onspeechend = () => {
-        recognition.stop();
-        console.log('stop speech recognition');
-      };
-    }
+    this.recognition.onspeechend = () => {
+      this.stopVoiceRecognition();
+    };
+  }
+
+  stopVoiceRecognition() {
+    this.recognition.stop();
+    console.log('stop speech recognition');
   }
 
   clickAnswer(answer) {
@@ -86,8 +86,8 @@ export class FirstAidQuestionComponent implements OnInit, AfterViewInit {
         this.selectedQuestion = null;
         this.displayQuestion();
         this.readQuestionAndAnswers();
+        this.startVoiceRecognition();
         this.ref.detectChanges();
-        this.recogniseAnswer();
       } else {
         this.router.navigateByUrl('first-aid-guide');
       }
@@ -96,5 +96,12 @@ export class FirstAidQuestionComponent implements OnInit, AfterViewInit {
 
   toggleAssistance() {
     this.voiceAssistant = !this.voiceAssistant;
+    if (this.voiceAssistant) {
+      this.readQuestionAndAnswers();
+      this.startVoiceRecognition();
+    } else {
+      this.stopReadingQuestionsAndAnswers();
+      this.stopVoiceRecognition();
+    }
   }
 }
