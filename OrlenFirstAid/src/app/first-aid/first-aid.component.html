@@ -1,15 +1,18 @@
-<h1 class="title">
+<h1 class="page-title">
   {{title}}
 </h1>
-<button [routerLink]="['/secure']" routerLinkActive="router-link-active"  class="card card-center-content first-aid">
-  <img class="car" src="assets/images/car.jpg">
-  <h3>{{choices[0]}}</h3>
+<button class="card card-center-content red-arrow"
+        routerLink="/secure">
+  <img  src="assets/images/car.jpg" class="icon-left">
+  <h2>{{choices[0]}}</h2>
 </button>
-<button [routerLink]="['/help']" class="card card-center-content card first-aid">
-  <img class="phone" src="assets/images/phone.jpg">
-  <h3>{{choices[1]}}</h3>
+<button class="card card-center-content red-arrow"
+        routerLink="/help">
+  <img src="assets/images/phone.jpg" class="icon-left">
+  <h2>{{choices[1]}}</h2>
 </button>
-<button class="card card-center-content card first-aid">
-  <img class="plaster" src="assets/images/plaster.jpg">
-  <h3>{{choices[2]}}</h3>
+<button class="card card-center-content red-arrow"
+        routerLink="/first-aid-questions">
+  <img src="assets/images/plaster.jpg" class="icon-left">
+  <h2>{{choices[2]}}</h2>
 </button>

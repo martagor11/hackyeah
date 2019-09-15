@@ -1,0 +1,54 @@
+@import '../styles/fonts';
+@import '../styles/colors';
+
+.question {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  font-family: $header-font;
+  margin: 30px 0 50px 0;
+}
+
+.assistance {
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  font-family: $header-font;
+  font-weight: 700;
+  color: $text-gray;
+  margin: 10px auto 20px auto;
+
+  img {
+    max-height: 48px;
+    margin-right: 5px;
+  }
+}
+
+.guide-list {
+  font-size: 14px;
+  font-family: $header-font;
+  font-weight: 600;
+  margin-bottom: 21px;
+  margin-top: 30px;
+  padding-left: 30px;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin-bottom: 24px;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 17px;
+      height: 17px;
+      background: $primary-red;
+      border-radius: 50%;
+      position: absolute;
+      left: -24px;
+      top: -2px;
+    }
+  }
+}
+

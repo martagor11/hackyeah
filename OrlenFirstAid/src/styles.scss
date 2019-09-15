@@ -22,8 +22,8 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
+  font-size: 100%;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -36,9 +36,6 @@ body {
   background-color: $background-gray;
   font-family: $content-font;
   font-size: 12px;
-}
-ol, ul {
-  list-style: none;
 }
 blockquote, q {
   quotes: none;
@@ -55,6 +52,7 @@ table {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font;
+  color: $text-gray;
 }
 
 .card {
@@ -63,20 +61,56 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 4px 1px rgba(0,0,0,0.16);
   margin-bottom: 8px;
   min-height: 90px;
+  position: relative;
 
   &:hover {
     cursor: pointer;
   }
+
+  &.icon-top img {
+    max-height: 30px;
+    width: auto;
+  }
+
+  &.card-center-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-left {
+    padding-right: 15px;
+  }
+
+  &.red-arrow::after {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 14px;
+    height: 24px;
+    margin-top: -12px;
+    background-size: cover;
+    display: block;
+    content: "";
+    background-image: url("./assets/images/arrow.svg");
+  }
+
 }
 
 button.card {
   display: block;
   width: 100%;
   border: 0;
+
+  &.active {
+    background: $primary-red;
+
+    h2, h3 {
+      color: $accent-white;
+    }
+  }
 }
 
 img {
-  width: 100%;
   max-width: 100%;
   height: auto;
 }
@@ -97,4 +131,11 @@ img {
 .special {
   font-weight: 800;
   text-transform: uppercase;
+}
+
+.page-title {
+  font-weight: 800;
+  text-align: center;
+  font-size: 24px;
+  margin: 24px 0 40px;
 }

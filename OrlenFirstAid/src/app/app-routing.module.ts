@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import { SecureComponent } from './secure/secure.component';
 import { FirstAidComponent } from './first-aid/first-aid.component';
 import { HelpComponent } from './help/help.component';
+import {FirstAidQuestionComponent} from './first-aid-question/first-aid-question.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'help',
     component: HelpComponent
+  },
+  {
+    path: 'first-aid-questions',
+    component: FirstAidQuestionComponent
   }
 ];
 
