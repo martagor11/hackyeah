@@ -73,7 +73,7 @@ export class FirstAidQuestionComponent implements OnInit {
     }
   }
 
-  stopReadingQuestionsAndAnswers() {
+  stopReading() {
     speechSynthesis.cancel();
   }
 
@@ -105,12 +105,12 @@ export class FirstAidQuestionComponent implements OnInit {
     this.selectedQuestion = this.answers.indexOf(answer);
     if (this.useVoiceAssistant) {
       this.stopVoiceRecognition();
-      this.stopReadingQuestionsAndAnswers();
+      this.stopReading();
     }
     this.ref.detectChanges();
 
     setTimeout(() => {
-      if (this.currentQuestion !== this.questionsList.length - 1) {
+      if (this.currentQuestion < this.questionsList.length - 1) {
         this.currentQuestion++;
         this.selectedQuestion = null;
 
@@ -128,12 +128,20 @@ export class FirstAidQuestionComponent implements OnInit {
 
   toggleAssistance() {
     this.useVoiceAssistant = !this.useVoiceAssistant;
-    if (this.useVoiceAssistant) {
-      this.readQuestionAndAnswers();
-      this.startVoiceRecognition();
+    if (this.showGuide) {
+      if (this.useVoiceAssistant) {
+        this.readGuide();
+      } else {
+        this.stopReading();
+      }
     } else {
-      this.stopReadingQuestionsAndAnswers();
-      this.stopVoiceRecognition();
+      if (this.useVoiceAssistant) {
+        this.readQuestionAndAnswers();
+        this.startVoiceRecognition();
+      } else {
+        this.stopReading();
+        this.stopVoiceRecognition();
+      }
     }
   }
 
