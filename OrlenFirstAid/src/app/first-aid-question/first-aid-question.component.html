@@ -1,6 +1,6 @@
 <button class="assistance" (click)="toggleAssistance()">
-  <img src="../../assets/images/microphone{{voiceAssistant ? '' : '-muted'}}.svg">
-  <span>{{voiceAssistant ? 'Wyłącz asystenta' : 'Uruchom asystenta'}}</span>
+  <img src="../../assets/images/microphone{{useVoiceAssistant ? '' : '-muted'}}.svg">
+  <span>{{useVoiceAssistant ? 'Wyłącz asystenta' : 'Uruchom asystenta'}}</span>
 </button>
 
 <div *ngIf="!showGuide">
@@ -23,7 +23,7 @@
   </ul>
 
   <button class="assistance" (click)="toggleTempo()">
-    <img src="../../assets/images/tempo{{tempoSound ? '' : ''}}.svg">
-    <span>{{tempoSound ? 'Wyłącz tempo' : 'Włącz tempo'}}</span>
+    <img src="../../assets/images/tempo{{playTempo ? '-muted' : ''}}.svg">
+    <span>{{playTempo ? 'Wyłącz tempo' : 'Włącz tempo'}}</span>
   </button>
 </div>

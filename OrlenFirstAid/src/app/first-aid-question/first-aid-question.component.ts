@@ -12,8 +12,11 @@ export class FirstAidQuestionComponent implements OnInit {
   currentQuestion = 0;
   selectedQuestion = null;
   recognition = new webkitSpeechRecognition();
-  voiceAssistant = false;
-  tempoSound = false;
+  useVoiceAssistant = false;
+  playTempo = false;
+  tempoSound = new Audio('../../assets/sounds/push.wav');
+  tempoInterval;
+
   showGuide = false;
 
   questionsList = [
@@ -35,7 +38,7 @@ export class FirstAidQuestionComponent implements OnInit {
     'Poszkodowany musi leżeć na plecach.',
     'Wymierz dłonią odpowiednią odległość.',
     'Zapleć dłonie razem.',
-    'Uciskaj w tempie ok. 100 razy na minutę (włącz tempo poniżej).',
+    'Uciskaj w tempie ok. 100 razy na minutę (włącz tempo klikając przycisk poniżej).',
   ];
 
   constructor(private ref: ChangeDetectorRef) {
@@ -55,7 +58,7 @@ export class FirstAidQuestionComponent implements OnInit {
   }
 
   readQuestionAndAnswers() {
-    if (this.voiceAssistant) {
+    if (this.useVoiceAssistant) {
       const msg = new SpeechSynthesisUtterance();
       msg.text = this.question + ' ' + this.answers.join(', ');
       speechSynthesis.speak(msg);
@@ -63,7 +66,7 @@ export class FirstAidQuestionComponent implements OnInit {
   }
 
   readGuide() {
-    if (this.voiceAssistant) {
+    if (this.useVoiceAssistant) {
       const msg = new SpeechSynthesisUtterance();
       msg.text = this.guideList.join(', ');
       speechSynthesis.speak(msg);
@@ -75,30 +78,36 @@ export class FirstAidQuestionComponent implements OnInit {
   }
 
   startVoiceRecognition() {
-    this.recognition.start();
+    if (this.useVoiceAssistant) {
+      this.recognition.start();
 
-    this.recognition.onresult = (event) => {
-      const last = event.results.length - 1;
-      const answer = event.results[last][0].transcript;
+      this.recognition.onresult = (event) => {
+        const last = event.results.length - 1;
+        const answer = event.results[last][0].transcript;
 
-      this.clickAnswer(answer);
-    };
+        this.clickAnswer(answer);
+      };
 
-    this.recognition.onspeechend = () => {
-      this.stopVoiceRecognition();
-    };
+      this.recognition.onspeechend = () => {
+        this.stopVoiceRecognition();
+      };
+    }
   }
 
   stopVoiceRecognition() {
-    this.recognition.stop();
-    console.log('stop speech recognition');
+    if (this.useVoiceAssistant) {
+      this.recognition.stop();
+      console.log('stop speech recognition');
+    }
   }
 
   clickAnswer(answer) {
     this.selectedQuestion = this.answers.indexOf(answer);
+    if (this.useVoiceAssistant) {
+      this.stopVoiceRecognition();
+      this.stopReadingQuestionsAndAnswers();
+    }
     this.ref.detectChanges();
-    this.stopVoiceRecognition();
-    this.stopReadingQuestionsAndAnswers();
 
     setTimeout(() => {
       if (this.currentQuestion !== this.questionsList.length - 1) {
@@ -112,13 +121,14 @@ export class FirstAidQuestionComponent implements OnInit {
       } else {
         this.showGuide = true;
         this.readGuide();
+        this.ref.detectChanges();
       }
     }, 400);
   }
 
   toggleAssistance() {
-    this.voiceAssistant = !this.voiceAssistant;
-    if (this.voiceAssistant) {
+    this.useVoiceAssistant = !this.useVoiceAssistant;
+    if (this.useVoiceAssistant) {
       this.readQuestionAndAnswers();
       this.startVoiceRecognition();
     } else {
@@ -128,6 +138,14 @@ export class FirstAidQuestionComponent implements OnInit {
   }
 
   toggleTempo() {
+    this.playTempo = !this.playTempo;
+    if (this.playTempo) {
+      this.tempoInterval = setInterval(() => {
+        this.tempoSound.play();
+      }, 200);
+    } else {
+      clearInterval(this.tempoInterval);
+    }
 
   }
 }

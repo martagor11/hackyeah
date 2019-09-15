@@ -14,7 +14,7 @@ const routes: Routes = [
     component: FirstAidComponent
   },
   {
-    path: 'first-aid-questions',
+    path: 'first-aid-guide',
     component: FirstAidQuestionComponent
   }
 ];
