@@ -22,8 +22,8 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
+  font-size: 100%;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -67,6 +67,11 @@ h1, h2, h3, h4, h5, h6 {
   &:hover {
     cursor: pointer;
   }
+
+  &.icon-top img {
+    max-height: 30px;
+    width: auto;
+  }
 }
 
 button.card {
@@ -76,7 +81,6 @@ button.card {
 }
 
 img {
-  width: 100%;
   max-width: 100%;
   height: auto;
 }

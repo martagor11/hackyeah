@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import { FirstAidComponent } from './firstAid/firstAid.component';
+import {FirstAidComponent} from './firstAid/firstAid.component';
 
 const routes: Routes = [
   {
@@ -9,7 +9,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'firstAid',
+    path: 'first-aid',
     component: FirstAidComponent
   }
 ];
