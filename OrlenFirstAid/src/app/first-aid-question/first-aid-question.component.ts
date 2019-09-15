@@ -11,7 +11,7 @@ export class FirstAidQuestionComponent implements OnInit {
   answers: string[];
   currentQuestion = 0;
   selectedQuestion = null;
-  recognition = new webkitSpeechRecognition();
+  recognition = new SpeechRecognition();
   voiceAssistant = false;
   tempoSound = false;
   showGuide = false;

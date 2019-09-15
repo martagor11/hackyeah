@@ -1,24 +1,14 @@
-.card-center-content {
+@import '../styles/_fonts';
+
+.step {
     display: flex;
-    align-items: center;
+    text-align: left;
+    font-size: 14px;
+    font-family: $header-font;
+    margin-bottom: 26px;
+    align-items: flex-start;
 }
 
-.number {
-    width: 24px;
-    height: 24px;
-}
-
-h1, h3 {
-    text-align: center;
-}
-
-h3 {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: justify;
-}
-
-h1 {
-    padding-top: 46px;
-    padding-bottom: 48px;
+.card {
+    padding: 42px 24px;
 }
