@@ -1,6 +1,17 @@
-<div>
-  <p>{{question}}</p>
-  <div *ngFor="let answer of answers">
-    <button (click)="clickAnswer(answer)">{{answer}}</button>
-  </div>
+<h1 class="page-title special">Udziel pierwszej pomocy</h1>
+
+<button class="assistance" (click)="toggleAssistance()">
+  <img src="../../assets/images/microphone{{voiceAssistant ? '' : '-muted'}}.png">
+  <span>{{voiceAssistant ? 'Wyłącz asystenta' : 'Uruchom asystenta'}}</span>
+</button>
+
+<p class="question">{{question}}</p>
+
+<div *ngFor="let answer of answers; let i = index">
+  <button class="card card-center-content card"
+          [ngClass]="{'active': selectedQuestion === i}"
+          (click)="clickAnswer(answer)">
+    <h2>{{answer}}</h2>
+  </button>
 </div>
+
