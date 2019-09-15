@@ -1,0 +1,22 @@
+@import '../styles/_fonts';
+
+.step {
+    display: flex;
+    text-align: left;
+    font-size: 14px;
+    font-family: $header-font;
+    margin-bottom: 26px;
+    align-items: flex-start;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.icon-left {
+    max-width: 24px;
+}
+
+.card {
+    padding: 42px 24px;
+}

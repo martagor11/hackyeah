@@ -1,6 +1,10 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {Router} from '@angular/router';
 
+interface IWindow extends Window {
+  webkitSpeechRecognition: any;
+}
+
 @Component({
   selector: 'app-first-aid-question',
   templateUrl: './first-aid-question.component.html',
@@ -11,7 +15,7 @@ export class FirstAidQuestionComponent implements OnInit {
   answers: string[];
   currentQuestion = 0;
   selectedQuestion = null;
-  recognition = new webkitSpeechRecognition();
+  recognition;
   useVoiceAssistant = false;
   playTempo = false;
   tempoSound = new Audio('../../assets/sounds/push.wav');
@@ -45,6 +49,8 @@ export class FirstAidQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    const {webkitSpeechRecognition}: IWindow = window as IWindow;
+    this.recognition = new webkitSpeechRecognition();
     this.recognition.lang = 'pl-PL';
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
