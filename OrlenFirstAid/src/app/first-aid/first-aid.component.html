@@ -1,7 +1,7 @@
 <h1 class="title">
   {{title}}
 </h1>
-<button class="card card-center-content first-aid">
+<button [routerLink]="['/secure']" routerLinkActive="router-link-active"  class="card card-center-content first-aid">
   <img class="car" src="assets/images/car.jpg">
   <h3>{{choices[0]}}</h3>
 </button>

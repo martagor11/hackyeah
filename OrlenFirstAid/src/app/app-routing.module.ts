@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import { FirstAidComponent } from './firstAid/firstAid.component';
+import { SecureComponent } from './secure/secure.component';
+import { FirstAidComponent } from './first-aid/first-aid.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'firstAid',
+    path: 'first-aid',
     component: FirstAidComponent
+  },
+  {
+    path: 'secure',
+    component: SecureComponent
   }
 ];
 
