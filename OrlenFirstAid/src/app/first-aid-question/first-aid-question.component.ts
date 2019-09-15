@@ -18,8 +18,7 @@ export class FirstAidQuestionComponent implements OnInit {
   recognition;
   useVoiceAssistant = false;
   playTempo = false;
-  tempoSound = new Audio('../../assets/sounds/push.wav');
-  tempoInterval;
+  tempoSound = new Audio('assets/sounds/push.wav');
 
   showGuide = false;
 
@@ -154,11 +153,13 @@ export class FirstAidQuestionComponent implements OnInit {
   toggleTempo() {
     this.playTempo = !this.playTempo;
     if (this.playTempo) {
-      this.tempoInterval = setInterval(() => {
-        this.tempoSound.play();
-      }, 200);
+      this.tempoSound.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+      }, false);
+      this.tempoSound.play();
     } else {
-      clearInterval(this.tempoInterval);
+      this.tempoSound.pause();
     }
 
   }

@@ -1,6 +1,6 @@
 <button class="assistance" (click)="toggleAssistance()">
-  <img src="assets/images/microphone{{useVoiceAssistant ? '' : '-muted'}}.svg">
-  <span>{{useVoiceAssistant ? 'Wyłącz asystenta' : 'Uruchom asystenta'}}</span>
+  <img src="assets/images/microphone{{useVoiceAssistant ? '-muted' : ''}}.svg">
+  <span>{{useVoiceAssistant ? 'Wyłącz asystenta' : 'Uruchom asystenta' }}</span>
 </button>
 
 <div *ngIf="!showGuide">
