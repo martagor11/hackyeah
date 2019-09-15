@@ -1,6 +1,15 @@
-<h1 class="Pierwsza-pomoc">
+<h1 class="title">
   {{title}}
 </h1>
-<div class="Rectangle-Copy-6" *ngFor="let choice of choices">
-  {{choice}}
-</div>
+<button class="card card-center-content first-aid">
+  <img class="car" src="assets/images/car.jpg">
+  <h3>{{choices[0]}}</h3>
+</button>
+<button class="card card-center-content card first-aid">
+  <img class="phone" src="assets/images/phone.jpg">
+  <h3>{{choices[1]}}</h3>
+</button>
+<button class="card card-center-content card first-aid">
+  <img class="plaster" src="assets/images/plaster.jpg">
+  <h3>{{choices[2]}}</h3>
+</button>
