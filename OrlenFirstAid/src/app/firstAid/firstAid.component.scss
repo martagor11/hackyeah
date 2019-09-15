@@ -46,4 +46,22 @@ h3 {
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
+    padding-left: 15px;
+}
+
+.card {
+    position: relative;
+}
+
+.card::after {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 14px;
+    height: 24px;
+    margin-top: -12px;
+    background-size: cover;
+    display: block;
+    content: "";
+    background-image: url("../../assets/images/arrow.jpg");
 }
