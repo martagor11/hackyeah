@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="106px" viewBox="0 0 106 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 57.1 (101010) - https://sketch.com -->
+    <title>10B65DB2-A9AA-495C-A6F2-2E404D100225</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="96" height="96" rx="48"></rect>
+        <filter x="-8.9%" y="-6.8%" width="117.7%" height="117.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Wezwij-pomoc-112" transform="translate(-135.000000, -160.000000)">
+            <g id="Group" transform="translate(140.000000, 163.000000)">
+                <g id="Rectangle-Copy-7">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#FEFEFE" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.5" y="0.5" width="95" height="95" rx="47.5"></rect>
+                </g>
+                <path d="M35.4285714,44.5714286 C39.2685714,52.1188571 43.8811429,56.704 51.4285714,60.5714286 L57.0948571,56.48 C57.8125714,55.76 58.88,55.52 59.8125714,55.84 C62.8,56.8274286 66.0274286,57.36 69.3325714,57.36 C70.8,57.36 72,58.56 72,60.0274286 L72,69.3325714 C72,70.8 70.8,72 69.3325714,72 C44.2925714,72 24,51.7074286 24,26.6674286 C24,25.2 25.2,24 26.6674286,24 L36,24 C37.4674286,24 38.6674286,25.2 38.6674286,26.6674286 C38.6674286,30 39.2,33.2 40.1874286,36.1874286 C40.48,37.12 40.2674286,38.16 39.52,38.9051429 L35.4285714,44.5714286 Z" id="Stroke-520" stroke="#464646" stroke-width="2.28571429" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
