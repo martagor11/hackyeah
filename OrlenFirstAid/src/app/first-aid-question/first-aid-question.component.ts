@@ -28,8 +28,8 @@ export class FirstAidQuestionComponent implements OnInit, AfterViewInit {
   recogniseAnswer() {
     const answers = this.answers;
 
-    const recognition = new webkitSpeechRecognition();
-    const speechRecognitionList = new webkitSpeechGrammarList();
+    const recognition = new SpeechRecognition();
+    const speechRecognitionList =  new SpeechGrammarList();
     speechRecognitionList.addFromString(answers.join(' | '), 1);
     recognition.grammars = speechRecognitionList;
     recognition.lang = 'pl-PL';
